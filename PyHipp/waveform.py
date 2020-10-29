@@ -1,5 +1,6 @@
 import DataProcessingTools as DPT
 import matplotlib.pyplot as plt
+import numpy as np
 import hickle as hkl
 import os
 import numpy as np
