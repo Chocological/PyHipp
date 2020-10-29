@@ -1,5 +1,6 @@
 import DataProcessingTools as DPT
 import matplotlib.pyplot as plt
+import numpy as np
 import hickle as hkl
 import os
 
@@ -55,7 +56,7 @@ class Waveform(DPT.DPObject):
         
         # check on the mountainsort template data and create a DPT object accordingly
         # Example:
-        if <self.data>:
+        if self.data:
             # create object if data is not empty
             DPT.DPObject.create(self, *args, **kwargs)
         else:
