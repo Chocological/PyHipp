@@ -43,6 +43,7 @@ class Waveform(DPT.DPObject):
         
         # read the mountainsort template files
         pwd = os.path.normpath(os.getcwd());
+		
         # 'channelxxx, xxx is the number of the channel'
         self.channel_filename = [os.path.basename(pwd)]  
         template_filename = os.path.join(
@@ -54,6 +55,19 @@ class Waveform(DPT.DPObject):
         # store the waveforms in the object by saving it to a list
         self.data = [np.squeeze(templates)]
         
+		# extracting the array name from the pwd variable
+		# DPT.levels.normpath remove the prefix before the subject directory
+		# (i.e. /data/picasso/20181105/session01/array01/channel002 will become picasso/20181105/session01/array01/channel002)
+		aname = DPT.levels.normpath(os.path.dirname(pwd))
+		# creating a dictionary to keep track of which items in the self.data list belong to that array
+		self.array_dict = dict()
+		self.array_dict[aname] = 0
+		
+		# add a field to help to keep track of the number of data set, as well as another field to keep track of 
+		# whether the channel or array plot type was chosen
+		self.numSets = 1
+		self.current_plot_type = None
+
         
         # check on the mountainsort template data and create a DPT object accordingly
         # Example:
@@ -70,6 +84,10 @@ class Waveform(DPT.DPObject):
         # It is useful to store the information of the objects for panning through in the future
         DPT.DPObject.append(self, wf)  # append self.setidx and self.dirs
         self.data = self.data + wf.data
+		for ar in wf.array_dict:
+			self.array_dict[ar] = self.numSets
+		self.numSets += 1
+
         
     def plot(self, i = None, ax = None, getNumEvents = False, getLevels = False,\
              getPlotOpts = False, overlay = False, **kwargs):
