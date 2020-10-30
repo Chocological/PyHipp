@@ -124,7 +124,6 @@ class Waveform(DPT.DPObject):
         if self.current_plot_type is None:
             self.current_plot_type = plot_type
 
-        
         if getNumEvents:  
             # this will be called by PanGUI.main to return two values: 
             # first value is the total number of items to pan through, 
@@ -223,7 +222,29 @@ class Waveform(DPT.DPObject):
         for x in fig.get_axes():  # remove all axes in current figure
             x.remove()   
 
+        if plot_type == 'Channel':  # plot in channel level
+            # plot the mountainsort data according to the current index 'i'
+            # .........................................
+            # ..................code...................
+            # .........................................
+            pass  # you may delete this line
     
+        ########labels###############
+        if not plotOpts['TitleOff']:  # if TitleOff icon in the right-click menu is clicked
+            # set the title in this format: channelxxx, fill with zeros if the channel number is not three-digit
+            # .........................................
+            # ..................codes..................
+            # .........................................
+            pass  # you may delete this line
+            
+        if not plotOpts['LabelsOff']:  # if LabelsOff icon in the right-click menu is clicked
+            # set the xlabel and ylabel
+            # .........................................
+            # ..................code...................
+            # .........................................
+            pass  # you may delete this line
+            
+        return ax
     
     
     #%% helper functions        
@@ -232,6 +253,4 @@ class Waveform(DPT.DPObject):
     # This will greatly increase the efficiency in maintaining the codes,
     # especially for those lines that are used for multiple times in multiple places.
     # Other than that, this will also greatly increase the readability of the code
-        
-        
-    
+
