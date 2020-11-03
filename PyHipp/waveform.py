@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import hickle as hkl
 import os
-from misc import getChannelInArray
+from .misc import getChannelInArray
 
 # to open plot: wfall = Waveform(loadFrom='waveform_d41d.hkl')
 # pwf = PanGUI.create_window(wfall)
