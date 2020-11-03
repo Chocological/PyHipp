@@ -1,10 +1,8 @@
 import DataProcessingTools as DPT
-import PanGUI
 import matplotlib.pyplot as plt
 import numpy as np
 import hickle as hkl
 import os
-import numpy as np
 from misc import getChannelInArray
 
 # to open plot: wfall = Waveform(loadFrom='waveform_d41d.hkl')
